@@ -2,11 +2,16 @@ package mini.project.handler;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import mini.project.domain.Menu;
 import mini.project.util.Prompt;
 
 public class MenuHandler {
+  static Map<Object, Object> food = new HashMap<Object, Object>();
+  static Map<Object, Object> cart = new HashMap<Object, Object>();
+
   ArrayList<Menu> menuList = new ArrayList<>();
   OrderHandler orderHandler;
 
@@ -31,13 +36,12 @@ public class MenuHandler {
 
 
     Menu menu = new Menu();
-    menu.setFood(Prompt.inputString("메뉴 선택: "));
-    menu.setNum(Prompt.inputInt("수량: "));
-    menu.setOrderedDate(new Date(System.currentTimeMillis())); //주문일시
-
 
     while (true) {
-      String food = Prompt.inputString("주문하시겠습니까?(취소: 빈 문자열) ");
+      String food = Prompt.inputString("주문하시겠습니까?(승인 :y // 취소: 빈 문자열) ");
+      menu.setFood(Prompt.inputString("메뉴 선택: "));
+      //    menu.setNum(Prompt.inputInt("수량: "));
+      menu.setOrderedDate(new Date(System.currentTimeMillis())); //주문일시
 
       if (food.length() == 0) {
         System.out.println("메뉴 주문을 취소합니다.");

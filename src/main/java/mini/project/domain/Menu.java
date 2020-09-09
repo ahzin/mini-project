@@ -6,6 +6,7 @@ public class Menu {
   //메뉴 정보
   private int no; //주문번호
   private String food;  // 메뉴
+  //private int pay; //가격
   private int num; //수량
   private Date orderedDate; //주문일자
   private int viewCount;

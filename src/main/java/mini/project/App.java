@@ -30,8 +30,8 @@ public class App {
           case "/order/add": orderHandler.add(); break;
           case "/order/list": orderHandler.list(); break;
           case "/order/detail": orderHandler.detail(); break;
-          case "/order/update": orderHandler.update(); break;
-          case "/order/delete": orderHandler.delete(); break;
+          case "/order/update": orderHandler.update(); break; //수정필요
+          case "/order/delete": orderHandler.delete(); break; //수정필요
           case "/menu/add": menuHandler.add(); break;
           case "/menu/list": menuHandler.list(); break;
           case "/menu/detail": menuHandler.detail(); break;
@@ -40,6 +40,7 @@ public class App {
           case "/deliver/add": deliverHandler.add(); break;
           case "/deliver/list": deliverHandler.list(); break;
           case "/deliver/delete": deliverHandler.delete(); break;
+          /*
           case "/pay/add": payHandler.add(); break;
           case "/pay/list": payHandler.list(); break;
           case "/pay/detail": payHandler.detail(); break;
@@ -50,6 +51,7 @@ public class App {
           case "/restaurant/detail": restaurantHandler.detail(); break;
           case "/restaurant/update": restaurantHandler.update(); break;
           case "/restaurant/delete": restaurantHandler.delete(); break;
+           */
           case "quit":
           case "exit":
             System.out.println("다음에도 이용해주세요!");
