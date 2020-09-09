@@ -33,14 +33,6 @@ import java.util.ArrayList;
  *
  * 사용법 :
  * Dummies.원하는 멤버변수.get(index).get(ID|PW/이름|나이|전화번호|시|구|동|포인트)
- *
- * @author sist47
- *
- */
-/**
- *
- * @author 외부데이터를 불러와 ArrayList에 저장하는 클래스
- *
  */
 public class Dummies {
   /**외부저장소에있는 가게Data들을 저장하는 ArrayList*/

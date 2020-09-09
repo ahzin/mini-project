@@ -68,80 +68,18 @@ public class StoreDelivery {
 
       if (num.equals("0")) {
         loop = false;
-      } else if (num.equals("1")) {
-        System.out.print("\t\t[어떤 항목으로 검색하시겠습니까?]\n\n\t\t1.주문번호 \n\n\t\t2.주문자명 \n\n\t\t3.전화번호\n\n");
-        System.out.print("\t\t입력 : ");
-        String num_search = scan.nextLine();
-        System.out.println();
-
-        if (num_search.equals("1")) {
-          findordernumber();
-          App.pause();
-          loop = false;
-        } else if (num_search.equals("2")) {
-          findname();
-          App.pause();
-          loop = false;
-        } else if (num_search.equals("3")) {
-          findphone();
-          App.pause();
-          loop = false;
-
-        }
+      } else if(num.equals("1")) {
+        System.out.print("\t\t[주문번호로 검색]\n\n");
+        findordernumber();
+        App.pause();
+        loop = false;
+      } else {
+        System.out.println("다시 입력하세요");
       }
+
     } // loop
 
   }// main
-
-
-  /**
-   * 주문자 전화번호로 검색하여 조회해주는 메소드
-   */
-  public void findphone() {
-    Scanner scan = new Scanner(System.in);
-    System.out.print("\n\t\t전화번호 : ");
-    String num_phone = scan.nextLine();
-    System.out.println("\n");
-
-    for (int i = 0; i < this.list.size(); i++) {
-      if (this.list.get(i).contains(num_phone)) {
-        System.out.println("\n\n\n");
-        System.out.printf("\t\t주문번호 : %s\n\n", this.orderNum.get(i));
-        System.out.printf("\t\t주문자명 : %s\n\n", this.orderName.get(i));
-        System.out.printf("\t\t전화번호 : %s\n\n", this.orderPhone.get(i));
-        System.out.printf("\t\t주소 : %s\n\n", this.orderAddress.get(i));
-        System.out.printf("\t\t주문상품 : %s\n\n", this.orderMenu.get(i));
-        System.out.printf("\t\t결제금액 : %,d원\n\n", Integer.parseInt(this.orderPrice.get(i)));
-        System.out.printf("\t\t배달 결과 : %s\n\n", this.orderResult.get(i));
-
-      }
-    }
-  }
-
-
-  /**
-   * 주문자명으로 검색하여 조회해주는 메소드
-   */
-  public void findname() {
-    Scanner scan = new Scanner(System.in);
-    System.out.print("\n\t\t주문자명 : ");
-    String num_name = scan.nextLine();
-    System.out.println("\n");
-
-    for (int i = 0; i < this.list.size(); i++) {
-      if (this.list.get(i).contains(num_name)) {
-        System.out.println("\n\n\n");
-        System.out.printf("\t\t주문번호 : %s\n\n", this.orderNum.get(i));
-        System.out.printf("\t\t주문자명 : %s\n\n", this.orderName.get(i));
-        System.out.printf("\t\t전화번호 : %s\n\n", this.orderPhone.get(i));
-        System.out.printf("\t\t주소 : %s\n\n", this.orderAddress.get(i));
-        System.out.printf("\t\t주문상품 : %s\n\n", this.orderMenu.get(i));
-        System.out.printf("\t\t결제금액 : %,d원\n\n", Integer.parseInt(this.orderPrice.get(i)));
-        System.out.printf("\t\t배달 결과 : %s\n\n", this.orderResult.get(i));
-
-      }
-    }
-  }
 
 
   /**
@@ -167,111 +105,6 @@ public class StoreDelivery {
       }
     }
 
-  }
-
-
-
-
-  /**
-   *  회원 번호로 주문한 상품가격 찾는 메소드
-   */
-  public String findprice(String memberID) {
-    String price = "";
-    for (int i = 0; i < Dummies.order.size(); i++) {
-      if (Dummies.order.get(i).getMemberID().equals(memberID)) {
-        price = Dummies.order.get(i).getMenuprice();
-      }
-    }
-    return price;
-  }
-
-  /**
-   * 회원 번호로 주문한 상품 찾는 메소드
-   */
-  public String findfood(String memberID) {
-    String menu = "";
-    for (int i = 0; i < Dummies.order.size(); i++) {
-      if (Dummies.order.get(i).getMemberID().equals(memberID)) {
-        menu = Dummies.order.get(i).getMenu();
-      }
-    }
-    return menu;
-  }
-
-  /**
-   * 회원, 비회원 주소 찾는 메소드
-   *
-   * @param memberID
-   * @return
-   */
-  public String findaddress(String memberID) {
-    String memberaddress = "";
-    for (int i = 0; i < Dummies.member.size(); i++) {
-      if (Dummies.member.get(i).getMemberID().equals(memberID)) {
-        memberaddress = Dummies.member.get(i).getMemberAddressCity() + " " +
-            Dummies.member.get(i).getMemberAddressGu() + " " +
-            Dummies.member.get(i).getMemberAddressDong();
-      }
-    }
-
-    for (int i = 0; i < Dummies.nomember.size(); i++) {
-      if (Dummies.nomember.get(i).getNomemberID().equals(memberID)) {
-        memberaddress = Dummies.nomember.get(i).getNomemberSi() + " " +
-            Dummies.nomember.get(i).getNomemberGu() + " " +
-            Dummies.nomember.get(i).getNomemberDong();
-      }
-    }
-    return memberaddress;
-  }
-
-  /**
-   * 회원, 비회원 이름 찾는 메소드
-   *
-   * @param memberID
-   * @return
-   */
-  public String namecheck(String memberID) {
-    //
-
-    //      MemberData member = new MemberData();
-    String membername = "";
-    for (int i = 0; i < Dummies.member.size(); i++) {
-      if (Dummies.member.get(i).getMemberID().equals(memberID)) {
-        membername = Dummies.member.get(i).getMemberName();
-      }
-    }
-
-    for (int i = 0; i < Dummies.nomember.size(); i++) {
-      if (Dummies.nomember.get(i).getNomemberID().equals(memberID)) {
-        membername = Dummies.nomember.get(i).getNomemberName();
-      }
-    }
-    return membername;
-
-    //
-  }
-
-  /**
-   * 회원, 비회원 전화번호 찾는 메소드
-   *
-   * @param memberID
-   * @return
-   */
-  public String phonecheck(String memberID) {
-    //      MemberData member = new MemberData();
-    String memberphone = "";
-    for (int i = 0; i < Dummies.member.size(); i++) {
-      if (Dummies.member.get(i).getMemberID().equals(memberID)) {
-        memberphone = Dummies.member.get(i).getMemberPhone();
-      }
-    }
-
-    for (int i = 0; i < Dummies.nomember.size(); i++) {
-      if (Dummies.nomember.get(i).getNomemberID().equals(memberID)) {
-        memberphone = Dummies.nomember.get(i).getNomemberPhone();
-      }
-    }
-    return memberphone;
   }
 
 }

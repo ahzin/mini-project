@@ -4,8 +4,6 @@ import java.util.Scanner;
 import mini.project.Main.Dummies;
 
 /**
- *
- * @author 조성빈
  *현재 라이더의 진행중인 배달 정보를 담당하는 클래스입니다.
  */
 public class RiderDeliveryWait {
@@ -48,65 +46,54 @@ public class RiderDeliveryWait {
 
       if (memberid.contains("TC")) {
         for (int i = 0; i < Dummies.nomember.size(); i++) {
-          if (Dummies.nomember.get(i).getNomemberID().equals(memberid)) {
+          if(Dummies.nomember.get(i).getNomemberID().equals(memberid)) {
             memberName = Dummies.nomember.get(i).getNomemberName();
             memberCity = Dummies.nomember.get(i).getNomemberSi();
             memberGu = Dummies.nomember.get(i).getNomemberDong();
             memberDong = Dummies.nomember.get(i).getNomemberDong();
             memberPhone = Dummies.nomember.get(i).getNomemberPhone();
           }
-
-        }
-      } else {
-        for (int i = 0; i < Dummies.member.size(); i++) {
-          if (Dummies.member.get(i).getMemberID().equals(memberid)) {
-            memberName = Dummies.member.get(i).getMemberName();
-            memberCity = Dummies.member.get(i).getMemberAddressCity();
-            memberGu = Dummies.member.get(i).getMemberAddressGu();
-            memberDong = Dummies.member.get(i).getMemberAddressDong();
-            memberPhone = Dummies.member.get(i).getMemberPhone();
-          }
-        }
-
-      }
-
-      String storeName = "";
-      String storeCity = "";
-      String storeGu = "";
-      String storeDong = "";
-      String storePhone = "";
-      for (int i = 0; i < Dummies.store.size(); i++) {
-        if (Dummies.store.get(i).getStoreID().equals(storeid)) {
-          storeName = Dummies.store.get(i).getStoreName();
-          storeCity = Dummies.store.get(i).getStoreAddressCity();
-          storeGu = Dummies.store.get(i).getStoreAddressGu();
-          storeDong = Dummies.store.get(i).getStoreAddressDong();
-          storePhone = Dummies.store.get(i).getStorePhone();
         }
       }
-
-      if (ck) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\t\t[진행중인 주문]\n");
-        System.out.println("\t[고객]");
-        System.out.printf("\t이름 : %s\n", memberName);
-        System.out.printf("\t주소 : %s %s %s\n", memberCity, memberGu, memberDong);
-        System.out.printf("\t전화번호 : %s\n\n", memberPhone);
-
-        System.out.println("\t[점포]");
-        System.out.printf("\t점포 이름 : %s\n", storeName);
-        System.out.printf("\t주소 : %s %s %s\n", storeCity, storeGu, storeDong);
-        System.out.printf("\t전화번호 : %s\n\n", storePhone);
-
-        System.out.println("\t배달 소요 시간 : 30분\n");
-
-        System.out.println("\t\t원하시는 항목을 선택해주세요.");
-        System.out.println("\t1. 배달 완료");
-      } else {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\t    현재 주문이 없습니다.");
-
-      }
-    } // loop
+    }
   }
+
+  String storeName = "";
+  String storeCity = "";
+  String storeGu = "";
+  String storeDong = "";
+  String storePhone = "";
+  for (int i = 0; i < Dummies.store.size(); i++) {
+    if (Dummies.store.get(i).getStoreID().equals(storeid)) {
+      storeName = Dummies.store.get(i).getStoreName();
+      storeCity = Dummies.store.get(i).getStoreAddressCity();
+      storeGu = Dummies.store.get(i).getStoreAddressGu();
+      storeDong = Dummies.store.get(i).getStoreAddressDong();
+      storePhone = Dummies.store.get(i).getStorePhone();
+    }
+  }
+
+  if (ck) {
+    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    System.out.println("\t\t[진행중인 주문]\n");
+    System.out.println("\t[고객]");
+    System.out.printf("\t이름 : %s\n", NomemberName);
+    System.out.printf("\t주소 : %s %s %s\n", NomemberCity, memberGu, memberDong);
+    System.out.printf("\t전화번호 : %s\n\n", memberPhone);
+
+    System.out.println("\t[점포]");
+    System.out.printf("\t점포 이름 : %s\n", storeName);
+    System.out.printf("\t주소 : %s %s %s\n", storeCity, storeGu, storeDong);
+    System.out.printf("\t전화번호 : %s\n\n", storePhone);
+
+    System.out.println("\t배달 소요 시간 : 30분\n");
+
+    System.out.println("\t\t원하시는 항목을 선택해주세요.");
+    System.out.println("\t1. 배달 완료");
+  } else {
+    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    System.out.println("\n\n\t    현재 주문이 없습니다.");
+
+  }
+} // loop
 }
