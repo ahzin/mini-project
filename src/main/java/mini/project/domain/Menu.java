@@ -4,11 +4,18 @@ import java.sql.Date;
 
 public class Menu {
   //메뉴 정보
+  private int no; //주문번호
   private String food;  // 메뉴
   private int num; //수량
   private Date orderedDate; //주문일자
   private int viewCount;
 
+  public int getNo() {
+    return no;
+  }
+  public void setNo(int no) {
+    this.no = no;
+  }
   public int getNum() {
     return num;
   }
@@ -35,9 +42,5 @@ public class Menu {
   public void setViewCount(int viewCount) {
     this.viewCount = viewCount;
   }
-  public void setOwner(String food) {
-    this.food = food;
-  }
-
 
 }

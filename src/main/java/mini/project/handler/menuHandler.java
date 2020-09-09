@@ -2,6 +2,7 @@ package mini.project.handler;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 import mini.project.domain.Menu;
 import mini.project.util.Prompt;
 
@@ -40,8 +41,8 @@ public class menuHandler {
       if (food.length() == 0) {
         System.out.println("메뉴 주문을 취소합니다.");
         return;
-      } else if (menuHandler.findByName(food) != null) {
-        menu.setOwner(food);
+      } else{
+        menu.setFood(food);
         break;
       }
 
@@ -54,37 +55,37 @@ public class menuHandler {
 
       if (num.length() == 0) {
         break;
-      } else if (menuHandler.findByName(num) != null) {
-        if (menu.length() > 0) {
+      } else if (num != null) {
+        if (num.length() > 0) {
           food.append(menu);
         } else {
           System.out.println("1개 이상 주문해주세요.");
         }
       }
+
       menu.setFood(food.toString());
 
       menuList.add(menu);
     }
 
     public void list() {
-      System.out.println("[프로젝트 목록]");
+      System.out.println("[주문 리스트]");
 
       Iterator<Menu> iterator = menuList.iterator();
 
       while (iterator.hasNext()) {
         Menu Menu = iterator.next();
-        System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
-            Menu.getnum(),
-            Menu.getTitle(),
-            Menu.getStartDate(),
-            Menu.getEndDate(),
-            Menu.getOwner(),
-            Menu.getMembers());
+        System.out.printf("%d, %s, %d, %s\n",
+            Menu.getNo(),
+            Menu.getFood(),
+            Menu.getNum(),
+            Menu.getOrderedDate()
+            );
       }
     }
 
     public void detail() {
-      System.out.println("[프로젝트 상세보기]");
+      System.out.println("[주문 상세보기]");
       int num = Prompt.inputInt("번호? ");
       Menu Menu = findBynum(num);
 
@@ -93,112 +94,74 @@ public class menuHandler {
         return;
       }
 
-      System.out.printf("프로젝트명: %s\n", Menu.getTitle());
-      System.out.printf("내용: %s\n", Menu.getContent());
-      System.out.printf("기간: %s ~ %s\n", Menu.getStartDate(), Menu.getEndDate());
-      System.out.printf("만든이: %s\n", Menu.getOwner());
-      System.out.printf("팀원: %s\n", Menu.getMembers());
+      System.out.printf("주문메뉴: %s\n", Menu.getFood());
+      System.out.printf("수량: %d\n", Menu.getNum());
+      System.out.printf("주문일시: %s\n", Menu.getOrderedDate());
     }
 
     public void update() {
-      System.out.println("[프로젝트 변경]");
-      int num = Prompt.inputInt("번호? ");
-      Menu Menu = findBynum(num);
+      System.out.println("[주문 변경]");
+      int no = Prompt.inputInt("주문번호? ");
+      Menu menu = findBynum(no);
 
-      if (Menu == null) {
-        System.out.println("해당 번호의 프로젝트가 없습니다.");
+      if (menu == null) {
+        System.out.println("해당 번호의 주문이 없습니다.");
         return;
       }
 
-      String title = Prompt.inputString(
-          String.format("프로젝트명(%s)? ", Menu.getTitle()));
-      String content = Prompt.inputString(
-          String.format("내용(%s)? ", Menu.getContent()));
-      Date startDate = Prompt.inputDate(
-          String.format("시작일(%s)? ", Menu.getStartDate()));
-      Date endDate = Prompt.inputDate(
-          String.format("종료일(%s)? ", Menu.getEndDate()));
-
-      String owner = null;
-      while (true) {
-        String name = Prompt.inputString(
-            String.format("만든이(%s)?(취소: 빈 문자열) ", Menu.getOwner()));
-        if (name.length() == 0) {
-          System.out.println("프로젝트 등록을 취소합니다.");
-          return;
-        } else if (memberHandler.findByName(name) != null) {
-          owner = name;
-          break;
-        }
-        System.out.println("등록된 회원이 아닙니다.");
-      }
-
-      StringBuilder members = new StringBuilder();
-      while (true) {
-        String name = Prompt.inputString(
-            String.format("팀원(%s)?(완료: 빈 문자열) ", Menu.getMembers()));
-        if (name.length() == 0) {
-          break;
-        } else if (memberHandler.findByName(name) != null) {
-          if (members.length() > 0) {
-            members.append(",");
-          }
-          members.append(name);
-        } else {
-          System.out.println("등록된 회원이 아닙니다.");
-        }
-      }
+      String food = Prompt.inputString(
+          String.format("메뉴명(%s)? ", menu.getFood()));
+      int num = Prompt.inputInt(
+          String.format("수량(%s)? ", menu.getNum()));
+      Date orderedDate = Prompt.inputDate(
+          String.format("주문일(%s)? ", menu.getOrderedDate()));
 
       String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
-      if (!response.equalsIgnumreCase("y")) {
-        System.out.println("프로젝트 변경을 취소하였습니다.");
+      if (!response.equalsIgnoreCase("y")) {
+        System.out.println("주문 변경을 취소하였습니다.");
         return;
       }
 
-      Menu.setTitle(title);
-      Menu.setContent(content);
-      Menu.setStartDate(startDate);
-      Menu.setEndDate(endDate);
-      Menu.setOwner(owner);
-      Menu.setMembers(members.toString());
+      menu.setFood(food);
+      menu.setNum(num);
 
-      System.out.println("프로젝트를 변경하였습니다.");
+      System.out.println("주문을 변경하였습니다.");
     }
 
     public void delete() {
-      System.out.println("[프로젝트 삭제]");
-      int num = Prompt.inputInt("번호? ");
-      int index = indexOf(num);
+      System.out.println("[주문 삭제]");
+      int no = Prompt.inputInt("주문 번호? ");
+      int index = indexOf(no);
 
       if (index == -1) {
-        System.out.println("해당 번호의 프로젝트가 없습니다.");
+        System.out.println("해당 번호의 주문이 없습니다.");
         return;
       }
 
       String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
-      if (!response.equalsIgnumreCase("y")) {
-        System.out.println("프로젝트 삭제를 취소하였습니다.");
+      if (!response.equalsIgnoreCase("y")) {
+        System.out.println("주문 전체 삭제를 취소하였습니다.");
         return;
       }
 
       menuList.remove(index);
-      System.out.println("프로젝트를 삭제하였습니다.");
+      System.out.println("주문을 전체 삭제하였습니다.");
     }
 
-    private Menu findBynum(int num) {
+    private Menu findBynum(int no) {
       for (int i = 0; i < menuList.size(); i++) {
         Menu Menu = menuList.get(i);
-        if (Menu.getnum() == num) {
+        if (Menu.getNum() == no) {
           return Menu;
         }
       }
       return null;
     }
 
-    private int indexOf(int num) {
+    private int indexOf(int no) {
       for (int i = 0; i < menuList.size(); i++) {
         Menu Menu = menuList.get(i);
-        if (Menu.getnum() == num) {
+        if (Menu.getNum() == no) {
           return i;
         }
       }
