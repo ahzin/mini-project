@@ -3,6 +3,12 @@
  */
 package mini.project.Main;
 
+import java.util.Scanner;
+
+import mini.project.handler.Rider.RiderMain;
+import mini.project.handler.Store.StoreMain;
+import mini.project.handler.nomember.NoMemberMain;
+
 public class App {
   private static Scanner scan ;
   //1번 생성 후 아래 루프에서 계속적으로 활용가능.
@@ -39,19 +45,15 @@ public class App {
       System.out.println("\n\n\t   (종료를 원하시면 0을 입력해주세yo)");
       System.out.print("\n\t\t  이동할 화면 입력(숫자): ");
       String selNum = scan.nextLine();
-      if ( selNum.equals("1")) {
-        //1. 회원으로 이동
-        MemberMain m = new MemberMain();
-        m.memberMain();
-      } else if (selNum.equals("2")) {
+      if (selNum.equals("2")) {
         //2.비회원으로 이동
         NoMemberMain nm = new NoMemberMain();
         nm.nomemberMain();
       } else if (selNum.equals("3")) {
-        //3. 본사로 이동
-        CompanyLogin c = new CompanyLogin();
-        c.login();
-      } else if (selNum.equals("4")) {
+//        //3. 본사로 이동
+//        CompanyLogin c = new CompanyLogin();
+//        c.login();
+//      } else if (selNum.equals("4")) {
         //4. 점포로 이동
         StoreMain s = new StoreMain();
         s.storeMain();
@@ -95,4 +97,4 @@ public class App {
   }
 
 }//class
-}
+
