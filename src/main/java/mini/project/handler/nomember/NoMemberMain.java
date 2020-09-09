@@ -2,8 +2,6 @@ package mini.project.handler.nomember;
 
 import java.util.Scanner;
 
-import main.Main;
-
 /**
  * 
  * @author 이다현

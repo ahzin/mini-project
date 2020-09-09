@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import main.Dummies;
-import main.MenuData;
-import main.MenuPriceData;
+import mini.project.Main.Dummies;
+import mini.project.Main.MenuData;
+import mini.project.Main.MenuPriceData;
 
 /**
- * 
+ * s
  * @author 이다현 
  *비회원 주문을 담당하는 클래스입니다.
  */

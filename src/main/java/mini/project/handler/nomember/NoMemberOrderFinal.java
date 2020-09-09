@@ -2,8 +2,8 @@ package mini.project.handler.nomember;
 
 import java.util.Scanner;
 
-import main.Dummies;
-import main.OrderData;
+import mini.project.Main.Dummies;
+import mini.project.Main.OrderData;
 
 /**
  * 
