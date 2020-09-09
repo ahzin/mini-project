@@ -9,6 +9,6 @@ public class App {
   }
 
   public static void main(String[] args) {
-    System.out.println("졸리고 배고프네요....따흑");
+    System.out.println("졸리고 배고프네요....따흑쒸");
   }
 }
