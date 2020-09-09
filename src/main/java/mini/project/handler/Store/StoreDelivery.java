@@ -36,11 +36,11 @@ public class StoreDelivery {
         if (Dummies.order.get(i).getWhatmean().equals(storemain.getStoreID()) &&
             Dummies.order.get(i).getAccept().equals("수락")) {
           String memberID = Dummies.order.get(i).getMemberID();
-          String memberName = namecheck(memberID);
-          String memberPhone = phonecheck(memberID);
-          String memberAddress = findaddress(memberID);
-          String menu = findfood(memberID);
-          String price = findprice(memberID);
+          String memberName = Dummies.nomember.get(i).getNomemberName();
+          String memberPhone = Dummies.nomember.get(i).getNomemberPhone();
+          String memberAddress = Dummies.nomember.get(i).getNomemberDong();
+          String menu = Dummies.order.get(i).getMenu();
+          String price = Dummies.order.get(i).getMenuprice();
           String slist = String.format("  OR%03d\t\t%s\t\t%s\t%s\n"
               , orderNum
               , memberName

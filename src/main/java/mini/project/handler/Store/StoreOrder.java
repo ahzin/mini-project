@@ -5,6 +5,8 @@ import java.util.Random;
 import java.util.Scanner;
 import mini.project.Main.App;
 import mini.project.Main.Dummies;
+import mini.project.handler.nomember.NoMemberOrder;
+
 
 /**
  * 점포 - 2.고객 주문 조회 클래스
@@ -55,7 +57,7 @@ public class StoreOrder {
               String ordernum = "";
               for(int j=0; j<this.orderNum.size(); j++) {
 
-                if(this.list.get(j).contains(memberName)) {
+                if(this.list.get(j).contains(noMemberName.getNoMemberName()) {
                   ordernum = this.orderNum.get(j);
                 }
 
