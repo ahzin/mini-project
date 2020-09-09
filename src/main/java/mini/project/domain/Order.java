@@ -2,7 +2,7 @@ package mini.project.domain;
 
 import java.sql.Date;
 //
-public class order {
+public class Order {
 	
 	 private int no;
 	 private String id;

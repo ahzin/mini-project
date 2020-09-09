@@ -1,5 +1,5 @@
 package mini.project.domain;
 
-public class pay {
+public class Restaurant {
 
 }

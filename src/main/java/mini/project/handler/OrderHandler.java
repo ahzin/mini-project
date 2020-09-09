@@ -4,18 +4,18 @@ package mini.project.handler;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import mini.project.domain.order;
+import mini.project.domain.Order;
 import mini.project.util.Prompt;
 
 // 
-public class orderHandler {
+public class OrderHandler {
 
-	  ArrayList<order> orderList = new ArrayList<>();
+	  ArrayList<Order> orderList = new ArrayList<>();
 
 	  public void add() {
 	    System.out.println("[주문]");
 
-	    order order = new order();
+	    Order order = new Order();
 	    
 	    order.setNo(Prompt.inputInt("번호? "));
 	    order.setId(Prompt.inputString("ID? "));
@@ -37,7 +37,7 @@ public class orderHandler {
 	    System.out.println("[주문 목록]");
 
 	    for (int i = 0; i < orderList.size(); i++) {
-	      order order = orderList.get(i);
+	      Order order = orderList.get(i);
 	      System.out.printf("%d, %s, %s, %s, %s, %s, %d\n",
 	          order.getNo(),
 	          order.getId(),
@@ -52,7 +52,7 @@ public class orderHandler {
 	  public void detail() {
 	    System.out.println("[주문 상세보기]");
 	    int no = Prompt.inputInt("번호? ");
-	    order order = findByNo(no);
+	    Order order = findByNo(no);
 
 	    if (order == null) {
 	      System.out.println("해당 번호의 주문이 없습니다.");
@@ -72,7 +72,7 @@ public class orderHandler {
 	  public void update() {
 	    System.out.println("[주문 변경]");
 	    int no = Prompt.inputInt("번호? ");
-	    order order = findByNo(no);
+	    Order order = findByNo(no);
 
 	    if (order == null) {
 	      System.out.println("해당 번호의 게시글이 없습니다.");
@@ -120,9 +120,9 @@ public class orderHandler {
 	    System.out.println("게시글을 삭제하였습니다.");
 	  }
 
-	  private order findByNo(int no) {
+	  private Order findByNo(int no) {
 	    for (int i = 0; i < orderList.size(); i++) {
-	      order order = orderList.get(i);
+	      Order order = orderList.get(i);
 	      if (order.getNo() == no) {
 	        return order;
 	      }
@@ -132,7 +132,7 @@ public class orderHandler {
 
 	  private int indexOf(int no) {
 	    for (int i = 0; i < orderList.size(); i++) {
-	      order order = orderList.get(i);
+	      Order order = orderList.get(i);
 	      if (order.getNo() == no) {
 	        return i;
 	      }

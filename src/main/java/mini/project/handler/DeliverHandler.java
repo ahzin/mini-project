@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import mini.project.domain.Deliver;
 import mini.project.util.Prompt;
 
-public class deliverHandler {
+public class DeliverHandler {
 
   ArrayList<Deliver> deliverList = new ArrayList<>();
 
