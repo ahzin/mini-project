@@ -4,7 +4,6 @@
 package mini.project.Main;
 
 import java.util.Scanner;
-
 import mini.project.handler.Rider.RiderMain;
 import mini.project.handler.Store.StoreMain;
 import mini.project.handler.nomember.NoMemberMain;
@@ -35,30 +34,23 @@ public class App {
     while(loop) {
       System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       System.out.println("\t\t\t1.  회원\n");
-      System.out.println("\t\t\t2. 비회원\n");
-      System.out.println("\t\t\t3.  본사\n");
-      System.out.println("\t\t\t4.  점포\n");
-      System.out.println("\t\t\t5. 라이더\n");
+      System.out.println("\t\t\t2.  점포\n");
+      System.out.println("\t\t\t3.  라이더\n");
       System.out.println("\n");
 
 
       System.out.println("\n\n\t   (종료를 원하시면 0을 입력해주세yo)");
       System.out.print("\n\t\t  이동할 화면 입력(숫자): ");
       String selNum = scan.nextLine();
-      if (selNum.equals("2")) {
-        //2.비회원으로 이동
+      if (selNum.equals("1")) {
+        //비회원으로 이동
         NoMemberMain nm = new NoMemberMain();
         nm.nomemberMain();
-      } else if (selNum.equals("3")) {
-//        //3. 본사로 이동
-//        CompanyLogin c = new CompanyLogin();
-//        c.login();
-//      } else if (selNum.equals("4")) {
-        //4. 점포로 이동
+      } else if (selNum.equals("2")) {
         StoreMain s = new StoreMain();
         s.storeMain();
-      } else if (selNum.equals("5")) {
-        //5. 라이더로 이동
+      } else if (selNum.equals("3")) {
+        //라이더로 이동
         RiderMain r = new RiderMain();
         r.ridermainmain();
       } else if (selNum.equals("0")) {
