@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Scanner;
 import mini.project.Main.App;
 import mini.project.Main.Dummies;
-import mini.project.handler.nomember.NoMemberOrder;
 
 
 /**
@@ -29,6 +28,7 @@ public class StoreOrder {
    * 주문 조회, 수락 메인메소드
    */
   public void main() {
+
     StoreMain storemain = new StoreMain();
     Scanner scan = new Scanner(System.in);
     int orderNum = 1;
@@ -53,18 +53,17 @@ public class StoreOrder {
             if (Dummies.order.get(i).getWhatmean().equals(storemain.getStoreID())
                 && Dummies.order.get(i).getAccept().equals("수락")
                 && Dummies.order.get(i).getComplete().equals("미완")) {
-              String memberID = Dummies.order.get(i).getMemberID();
+              String memberID = Dummies.nomember.get(i).getNomemberID();
               String ordernum = "";
               for(int j=0; j<this.orderNum.size(); j++) {
-
-                if(this.list.get(j).contains(noMemberName.getNoMemberName()) {
+                if(this.list.get(j).contains(memberID)) {
                   ordernum = this.orderNum.get(j);
                 }
 
               }
 
-              String slist = String.format("  %s\t\t%s\t%s\t%s\n", ordernum, memberName,
-                  memberAddress, memberPhone);
+              String slist = String.format("  %s\t\t%s\t%s\t%s\n", ordernum, this.orderName,
+                  this.orderAddress, this.orderPhone);
               System.out.println(slist);
               break;
             }
