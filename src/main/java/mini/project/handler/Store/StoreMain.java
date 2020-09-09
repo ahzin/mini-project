@@ -1,6 +1,7 @@
 package mini.project.handler.Store;
 
 import java.util.Scanner;
+import mini.project.Main.App;
 import mini.project.Main.Dummies;
 import mini.project.Main.StoreData;
 
@@ -71,7 +72,7 @@ public class StoreMain {
     } // loop
 
     System.out.println("\t초기화면으로 돌아갑니다...");
-    Main.pause();
+    App.pause();
   }
 
   /**
@@ -81,27 +82,21 @@ public class StoreMain {
 
     boolean loop = true;
     while (loop) {
-      StoreInfoAlter storeinfo = new StoreInfoAlter();
       StoreOrder storeorder = new StoreOrder();
       StoreDelivery storedelivery = new StoreDelivery();
-      StoreReview storereview = new StoreReview();
 
       Scanner scan = new Scanner(System.in);
       System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       System.out.println("\n\n\t\t== 점포 메인화면 ==");
       System.out.println("\n\t(뒤로가기를 원하면 0번을 입력해주세yo)\n");
-      System.out.print("\t\t1.점포 정보 수정 \n\n\t\t2.고객 주문 조회\n\n\t\t3.배달 조회\n\n\t\t4.고객 리뷰 조회\n\n");
+      System.out.print("\t\t1.고객 주문 조회\n\n\t\t2.배달 조회\n\n");
       System.out.print("\t\t이동할 화면 입력(숫자) : ");
       String num_main = scan.nextLine();
       System.out.println();
       if (num_main.equals("1")) {
-        storeinfo.main();
-      } else if (num_main.equals("2")) {
         storeorder.main();
-      } else if (num_main.equals("3")) {
+      } else if (num_main.equals("2")) {
         storedelivery.main();
-      } else if (num_main.equals("4")) {
-        storereview.main();
       } else if (num_main.equals("0")) {
         loop = false;
       }
@@ -171,8 +166,6 @@ public class StoreMain {
     sto.setStoreAddressDong(StoreAddressDong);
 
     Dummies.store.add(sto);
-    //      System.out.println(Dummies.nostore.size()); //입력 후 배열의 크기
-    //      System.out.println(Dummies.nostore.get(Dummies.nostore.size() - 1).toString());
 
     System.out.printf("\t\t회원가입이 완료되었습니다.\n\t\t점포ID는 %s입니다.\n\n", storeID);
   }// regist
@@ -184,15 +177,7 @@ public class StoreMain {
   public void setStoreID(String storeID) {
     this.storeID = storeID;
   }
-  //
-  //  public String getStorePW() {
-  //      return storePW;
-  //  }
-  //
-  //  public void setStorePW(String storePW) {
-  //      this.storePW = storePW;
-  //  }
-  //
+
   public String getStoreName() {
     return storeName;
   }
@@ -200,37 +185,5 @@ public class StoreMain {
   public void setStoreName(String storeName) {
     this.storeName = storeName;
   }
-  //
-  //  public String getStorePhone() {
-  //      return storePhone;
-  //  }
-  //
-  //  public void setStorePhone(String storePhone) {
-  //      this.storePhone = storePhone;
-  //  }
-  //
-  //  public String getStoreAddressCity() {
-  //      return storeAddressCity;
-  //  }
-  //
-  //  public void setStoreAddressCity(String storeAddressCity) {
-  //      this.storeAddressCity = storeAddressCity;
-  //  }
-  //
-  //  public String getStoreAddressDong() {
-  //      return storeAddressDong;
-  //  }
-  //
-  //  public void setStoreAddressDong(String storeAddressDong) {
-  //      this.storeAddressDong = storeAddressDong;
-  //  }
-  //
-  //  public String getStoreOrderCount() {
-  //      return storeOrderCount;
-  //  }
-  //
-  //  public void setStoreOrderCount(String storeOrderCount) {
-  //      this.storeOrderCount = storeOrderCount;
-  //  }
 
 }

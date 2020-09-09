@@ -2,13 +2,12 @@ package mini.project.handler.Store;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import mini.project.Main.App;
 import mini.project.Main.Dummies;
 
 /**
  * 점포 - 3.배달 조회
- *
- * @author sist47
- *
+
  */
 public class StoreDelivery {
   private ArrayList<String> orderNum = new ArrayList<String>(); // 주문번호
@@ -77,15 +76,15 @@ public class StoreDelivery {
 
         if (num_search.equals("1")) {
           findordernumber();
-          Main.pause();
+          App.pause();
           loop = false;
         } else if (num_search.equals("2")) {
           findname();
-          Main.pause();
+          App.pause();
           loop = false;
         } else if (num_search.equals("3")) {
           findphone();
-          Main.pause();
+          App.pause();
           loop = false;
 
         }
