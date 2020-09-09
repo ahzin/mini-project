@@ -3,7 +3,6 @@ package mini.project.Main;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import main.MemberData;
 
 /**
  * [ArrayList 멤버변수 목록]
@@ -44,8 +43,6 @@ import main.MemberData;
  *
  */
 public class Dummies {
-  /**외부저장소에있는 회원Data들을 저장하는 ArrayList*/
-  public static ArrayList<MemberData> member = new ArrayList<MemberData>();
   /**외부저장소에있는 가게Data들을 저장하는 ArrayList*/
   public static ArrayList<StoreData> store = new ArrayList<StoreData>();
   /**외부저장소에있는 라이더Data들을 저장하는 ArrayList*/
@@ -57,8 +54,6 @@ public class Dummies {
   /**외부저장소에있는 주문Data들을 저장하는 ArrayList*/
   public static ArrayList<OrderData> order = new ArrayList<OrderData>();
   /**외부저장소에있는 리뷰Data들을 저장하는 ArrayList*/
-  public static ArrayList<ReviewData> review = new ArrayList<ReviewData>();
-  /**외부저장소에있는 비회원Data들을 저장하는 ArrayList*/
   public static ArrayList<NoMemberData> nomember = new ArrayList<NoMemberData>();
 
   /**라이더번호를 누적하는 static int (ex. R2001)*/
@@ -86,20 +81,6 @@ public class Dummies {
       BufferedReader reader = new BufferedReader(new FileReader(path));
       String line = null;
 
-      while ((line = reader.readLine()) != null) {
-        MemberData mm = new MemberData();
-        String[] temp = line.split("\\|");
-        mm.setMemberID(temp[0]);
-        mm.setMemberPW(temp[1]);
-        mm.setMemberName(temp[2]);
-        mm.setMemberPhone(temp[3]);
-        mm.setMemberAddressCity(temp[4]);
-        mm.setMemberAddressGu(temp[5]);
-        mm.setMemberAddressDong(temp[6]);
-        mm.setMemberPoint(temp[7]);
-        member.add(mm);
-      }
-      reader.close();
 
       /*외부저장소에 있는 점포Data들의 위치*/
       String path2 = "dat\\store.dat";
@@ -197,24 +178,6 @@ public class Dummies {
         order.add(ord);
       }
       reader.close();
-
-
-      /*외부저장소에 있는 리뷰Data들의 위치*/
-      String path7 = "dat\\review.dat";
-      BufferedReader reader7 = new BufferedReader(new FileReader(path7));
-      line = null;
-
-      while ((line = reader7.readLine()) != null) {
-        ReviewData rev = new ReviewData();
-        String[] temp = line.split("\\|");
-        rev.setStoreID(temp[0]);
-        rev.setMemberID(temp[1]);
-        rev.setComment(temp[2]);
-
-        review.add(rev);
-      }
-      reader.close();
-
 
       /*외부저장소에 있는 비회원Data들의 위치*/
       String path8 = "dat\\nomember.dat";
