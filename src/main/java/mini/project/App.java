@@ -9,6 +9,10 @@ public class App {
   }
 
   public static void main(String[] args) {
+    int a = 100;
+    if(a >50) {
+      System.out.println("크다!");
+    }
 
     System.out.println("오호라!!!!!!");
     System.out.println("졸리고 배고프네요....따흑쒸");
