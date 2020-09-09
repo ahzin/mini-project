@@ -1,16 +1,11 @@
 package mini.project.handler;
 
-
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 import mini.project.domain.Order;
 import mini.project.util.Prompt;
 
-//
+
 public class OrderHandler {
-
-  ArrayList<Order> orderList = new ArrayList<>();
-
   public void add() {
     System.out.println("[주문]");
 
@@ -138,5 +133,6 @@ public class OrderHandler {
     }
     return -1;
   }
+  */
 }
 

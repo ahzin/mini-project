@@ -1,17 +1,15 @@
 package mini.project.handler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import mini.project.domain.Menu;
+import mini.project.domain.Order;
 import mini.project.util.Prompt;
 
 public class MenuHandler {
-  static Map<Object, Object> food = new HashMap<Object, Object>();
-  static Map<Object, Object> cart = new HashMap<Object, Object>();
-
   ArrayList<Menu> menuList = new ArrayList<>();
   OrderHandler orderHandler;
 
@@ -20,7 +18,39 @@ public class MenuHandler {
     this.orderHandler = orderHandler;
   }
 
-  public void add() {
+  public static void main(String[] args) {
+    ArrayList<Menu> menuList= new ArrayList<>();
+    Menu menu = new Menu();
+    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+    try {
+      do {
+        System.out.println("1. 메뉴주문");
+        System.out.println("2. 주문확인");
+        System.out.println("3. 주문변경");
+        System.out.println("4. 주문삭제");
+        System.out.println("5. 결제");
+        System.out.println("0. 종료");
+        System.out.print("기능 선택 > ");
+
+        menu=String.parseString(in.readLine());
+        if(menu == 1) {
+          add();
+        } else if(menu == 2) {
+          detail();
+        } else if(menu == 3) {
+          update();
+        } else if(menu == 4) {
+          delete();
+        }else
+          break;
+
+      } while(menu!=0);
+    }catch(IOException e) {}
+  }
+
+
+  public static void add() {
     System.out.println("[메뉴 주문]");
     System.out.println("현재 저희 업체는 코로나로 인해,");
     System.out.println("야식만 배달 가능합니다.");
@@ -33,9 +63,61 @@ public class MenuHandler {
     System.out.println("*******4. 족발 (10,000원)*******");
     System.out.println("*******5. 곱창 (10,000원)*******");
     System.out.println("********************************");
+  }
+
+  public static void detail() {
+    System.out.println("[주문 상세보기]");
+    int num = Prompt.inputInt("번호? ");
+    Menu Menu = findBynum(num);
+
+    if (Menu == null) {
+      System.out.println("해당 번호의 프로젝트가 없습니다.");
+      return;
+    }
+
+    System.out.printf("주문메뉴: %s\n", Menu.getFood());
+    System.out.printf("수량: %d\n", Menu.getNum());
+    System.out.printf("주문일시: %s\n", Menu.getOrderedDate());
+  }
+
+  public static void update() {
+    System.out.println("[주문 변경]");
+    int no = Prompt.inputInt("주문번호? ");
+    Menu menu = findBynum(no);
+
+    if (menu == null) {
+      System.out.println("해당 번호의 주문이 없습니다.");
+      return;
+    }
+
+    String food = Prompt.inputString(
+        String.format("메뉴명(%s)? ", menu.getFood()));
+    int num = Prompt.inputInt(
+        String.format("수량(%s)? ", menu.getNum()));
+    Date orderedDate = Prompt.inputDate(
+        String.format("주문일(%s)? ", menu.getOrderedDate()));
+
+    String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
+    if (!response.equalsIgnoreCase("y")) {
+      System.out.println("주문 변경을 취소하였습니다.");
+      return;
+    }
+
+    menu.setFood(food);
+    menu.setNum(num);
+
+    System.out.println("주문을 변경하였습니다.");
+  }
 
 
-    Menu menu = new Menu();
+}
+
+
+/*
+  static Map<Object, Object> food = new HashMap<Object, Object>();
+  static Map<Object, Object> cart = new HashMap<Object, Object>();
+
+
 
     while (true) {
       String food = Prompt.inputString("주문하시겠습니까?(승인 :y // 취소: 빈 문자열) ");
@@ -88,49 +170,7 @@ public class MenuHandler {
     }
   }
 
-  public void detail() {
-    System.out.println("[주문 상세보기]");
-    int num = Prompt.inputInt("번호? ");
-    Menu Menu = findBynum(num);
 
-    if (Menu == null) {
-      System.out.println("해당 번호의 프로젝트가 없습니다.");
-      return;
-    }
-
-    System.out.printf("주문메뉴: %s\n", Menu.getFood());
-    System.out.printf("수량: %d\n", Menu.getNum());
-    System.out.printf("주문일시: %s\n", Menu.getOrderedDate());
-  }
-
-  public void update() {
-    System.out.println("[주문 변경]");
-    int no = Prompt.inputInt("주문번호? ");
-    Menu menu = findBynum(no);
-
-    if (menu == null) {
-      System.out.println("해당 번호의 주문이 없습니다.");
-      return;
-    }
-
-    String food = Prompt.inputString(
-        String.format("메뉴명(%s)? ", menu.getFood()));
-    int num = Prompt.inputInt(
-        String.format("수량(%s)? ", menu.getNum()));
-    Date orderedDate = Prompt.inputDate(
-        String.format("주문일(%s)? ", menu.getOrderedDate()));
-
-    String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
-    if (!response.equalsIgnoreCase("y")) {
-      System.out.println("주문 변경을 취소하였습니다.");
-      return;
-    }
-
-    menu.setFood(food);
-    menu.setNum(num);
-
-    System.out.println("주문을 변경하였습니다.");
-  }
 
   public void delete() {
     System.out.println("[주문 삭제]");
@@ -171,4 +211,5 @@ public class MenuHandler {
     }
     return -1;
   }
+ */
 }
