@@ -3,44 +3,56 @@
  */
 package mini.project;
 
+import mini.project.handler.DeliverHandler;
+import mini.project.handler.MenuHandler;
+import mini.project.handler.OrderHandler;
+import mini.project.handler.PayHandler;
+import mini.project.handler.RestaurantHandler;
 import mini.project.util.Prompt;
 
 public class App {
   public static void main(String[] args) {
 
-    BoardHandler boardHandler = new BoardHandler();
-    MemberHandler memberHandler = new MemberHandler();
-    ProjectHandler projectHandler = new ProjectHandler(memberHandler);
-    TaskHandler taskHandler = new TaskHandler(memberHandler);
+    DeliverHandler deliverHandler = new DeliverHandler();
+    MenuHandler menuHandler = new MenuHandler(null, null); // 오류 ??
+    OrderHandler orderHandler = new OrderHandler();
+    PayHandler payHandler = new PayHandler();
+    RestaurantHandler restaurantHandler = new RestaurantHandler();
 
     loop:
       while (true) {
+        System.out.println("***대한민국 1위 배달 어플리케이션***");
+        System.out.println("**********이 되고싶습니다.**********");
+
         String command = Prompt.inputString("명령> ");
 
         switch (command) {
-          case "/member/add": memberHandler.add(); break;
-          case "/member/list": memberHandler.list(); break;
-          case "/member/detail": memberHandler.detail(); break;
-          case "/member/update": memberHandler.update(); break;
-          case "/member/delete": memberHandler.delete(); break;
-          case "/project/add": projectHandler.add(); break;
-          case "/project/list": projectHandler.list(); break;
-          case "/project/detail": projectHandler.detail(); break;
-          case "/project/update": projectHandler.update(); break;
-          case "/project/delete": projectHandler.delete(); break;
-          case "/task/add": taskHandler.add(); break;
-          case "/task/list": taskHandler.list(); break;
-          case "/task/detail": taskHandler.detail(); break;
-          case "/task/update": taskHandler.update(); break;
-          case "/task/delete": taskHandler.delete(); break;
-          case "/board/add": boardHandler.add(); break;
-          case "/board/list": boardHandler.list(); break;
-          case "/board/detail": boardHandler.detail(); break;
-          case "/board/update": boardHandler.update(); break;
-          case "/board/delete": boardHandler.delete(); break;
+          case "/order/add": orderHandler.add(); break;
+          case "/order/list": orderHandler.list(); break;
+          case "/order/detail": orderHandler.detail(); break;
+          case "/order/update": orderHandler.update(); break;
+          case "/order/delete": orderHandler.delete(); break;
+          case "/menu/add": menuHandler.add(); break;
+          case "/menu/list": menuHandler.list(); break;
+          case "/menu/detail": menuHandler.detail(); break;
+          case "/menu/update": menuHandler.update(); break;
+          case "/menu/delete": menuHandler.delete(); break;
+          case "/deliver/add": deliverHandler.add(); break;
+          case "/deliver/list": deliverHandler.list(); break;
+          case "/deliver/delete": deliverHandler.delete(); break;
+          case "/pay/add": payHandler.add(); break;
+          case "/pay/list": payHandler.list(); break;
+          case "/pay/detail": payHandler.detail(); break;
+          case "/pay/update": payHandler.update(); break;
+          case "/pay/delete": payHandler.delete(); break;
+          case "/restaurant/add": restaurantHandler.add(); break;
+          case "/restaurant/list": restaurantHandler.list(); break;
+          case "/restaurant/detail": restaurantHandler.detail(); break;
+          case "/restaurant/update": restaurantHandler.update(); break;
+          case "/restaurant/delete": restaurantHandler.delete(); break;
           case "quit":
           case "exit":
-            System.out.println("안녕!");
+            System.out.println("다음에도 이용해주세요!");
             break loop;
           default:
             System.out.println("실행할 수 없는 명령입니다.");
