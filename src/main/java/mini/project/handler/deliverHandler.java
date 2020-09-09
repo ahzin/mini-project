@@ -24,12 +24,12 @@ public class deliverHandler {
 
     for (int i = 0; i < deliverList.size(); i++) {
       Deliver deliver = deliverList.get(i);
-      System.out.printf("주문 번호:%d, "
-          + "담당라이더:%s, "
-          + "라이더번호:%s, "
-          + "주문시간:%s, "
-          + "가게주소:%s, "
-          + "배달주소:%s\n",
+      System.out.printf("주문 번호:%d"
+          + "\n담당라이더:%s"
+          + "\n라이더번호:%s "
+          + "\n주문시간:%s"
+          + "\n가게주소:%s"
+          + "\n배달주소:%s",
           deliver.getNo(),
           deliver.getName(),
           deliver.getTel()
