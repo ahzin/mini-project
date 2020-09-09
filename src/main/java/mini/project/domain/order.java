@@ -1,7 +1,7 @@
 package mini.project.domain;
 
 import java.sql.Date;
-
+//
 public class order {
 	
 	 private int no;
