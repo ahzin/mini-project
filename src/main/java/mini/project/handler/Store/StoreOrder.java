@@ -34,7 +34,7 @@ public class StoreOrder {
     while (loop) {
       System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       System.out.println("\n\n\n\n\t\t== 고객 주문 조회 ==\n");
-      System.out.print("\t\t1.현재 주문목록 \n\n\t\t2.주문 대기 목록\n\n");
+      System.out.print("\t\t(현재 주문목록보기를 원하시면 1번을 입력해주세yo)\n\n");
       System.out.println("\t(뒤로가기를 원하면 0번을 입력해주세yo)\n");
       System.out.print("\t\t입력 : ");
       String num_order = scan.nextLine();
@@ -69,87 +69,15 @@ public class StoreOrder {
 
           }
           System.out.println("\t(뒤로가기를 원하면 엔터를 입력해주세yo)\n");
-          System.out.print("\t\t1.상세보기\n\n");
+          System.out.print("\t\t상세보기\n\n");
           System.out.print("\t\t입력 : ");
           String num = scan.nextLine();
           System.out.println("\n");
 
-
           if (num.equals("0")) {
             loop = false;
           } else if (num.equals("1")) {
-            System.out.print("\t[어떤 항목으로 검색하시겠습니까?]\n\n\t\t1.주문번호\n\n\t\t2.주문자명\n\n\t\t3.전화번호\n\n");
-            System.out.print("\t\t입력 : ");
-            String num_search = scan.nextLine();
-            System.out.println("\n");
-
-
-            if (num_search.equals("1")) {
-              findordernumber(false);
-              App.pause();
-            } else if (num_search.equals("2")) {
-              findname(false);
-              App.pause();
-            } else if (num_search.equals("3")) {
-              findphone(false);
-              App.pause();
-            }
-          }
-        }
-      } else if (num_order.equals("2")) {
-        orderNum = 1;
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\t\t== 대기중인 주문목록 ==\n");
-        System.out.println("주문번호\t주문자명\t주소\t\t전화번호");
-        System.out.println("=============================================================");
-        for (int i = 0; i < Dummies.order.size(); i++) {
-          if (Dummies.order.get(i).getWhatmean().equals(storemain.getStoreID())
-              && Dummies.order.get(i).getAccept().equals("대기")) {
-            String memberID = Dummies.order.get(i).getMemberID();
-            String memberName = namecheck(memberID);
-            String memberPhone = phonecheck(memberID);
-            String memberAddress = findaddress(memberID);
-            String menu = findfood(memberID);
-            String price = findprice(memberID);
-            String slist = String.format("  OR%d\t\t%s\t%s\t%s\n", orderNum, memberName, memberAddress,
-                memberPhone);
-
-            System.out.println(slist);
-
-            this.orderNum.add("OR" + orderNum);
-            this.orderName.add(memberName);
-            this.orderPhone.add(memberPhone);
-            this.orderResult.add(Dummies.order.get(i).getComplete());
-            this.orderMenu.add(menu);
-            this.orderPrice.add(price);
-            this.orderAddress.add(memberAddress);
-            this.orderID.add(memberID);
-            this.list.add(slist);
-
-            orderNum++;
-          }
-        }
-        System.out.println("\t(뒤로가기를 원하면 엔터를 입력해주세yo)\n");
-        System.out.print("\t\t1.상세보기\n\n");
-        System.out.print("\t\t입력 : ");
-        String num = scan.nextLine();
-        System.out.println("\n");
-        if (num.equals("0")) {
-          loop = false;
-        } else if (num.equals("1")) {
-          System.out.print("\t\t[어떤 항목으로 검색하시겠습니까?]\n\n\t\t1.주문번호\n\n\t\t2.주문자명\n\n\t\t3.전화번호\n\n");
-          System.out.print("\t\t입력 : ");
-          String num_search = scan.nextLine();
-          System.out.println("\n");
-
-          if (num_search.equals("1")) {
-            findordernumber(true);
-            App.pause();
-          } else if (num_search.equals("2")) {
-            findname(true);
-            App.pause();
-          } else if (num_search.equals("3")) {
-            findphone(true);
+            findordernumber(false);
             App.pause();
           }
         }
@@ -161,8 +89,6 @@ public class StoreOrder {
 
   /**
    * 주문 수락 메소드
-   *
-   * @param id
    */
   public void accept(String id) {
     Random rnd = new Random();
