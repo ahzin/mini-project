@@ -1,6 +1,7 @@
 package mini.project.handler.Rider;
 
 import java.util.Scanner;
+
 import mini.project.Main.Dummies;
 
 /**
@@ -38,25 +39,24 @@ public class RiderDeliveryWait {
         }
       }
 
-      String memberName = "";
-      String memberCity = "";
-      String memberGu = "";
-      String memberDong = "";
-      String memberPhone = "";
+      String NoMemberName = "";
+      String NoMemberCity = "";
+      String NoMemberGu = "";
+      String NoMemberDong = "";
+      String NoMemberPhone = "";
 
       if (memberid.contains("TC")) {
         for (int i = 0; i < Dummies.nomember.size(); i++) {
           if(Dummies.nomember.get(i).getNomemberID().equals(memberid)) {
-            memberName = Dummies.nomember.get(i).getNomemberName();
-            memberCity = Dummies.nomember.get(i).getNomemberSi();
-            memberGu = Dummies.nomember.get(i).getNomemberDong();
-            memberDong = Dummies.nomember.get(i).getNomemberDong();
-            memberPhone = Dummies.nomember.get(i).getNomemberPhone();
+            NoMemberName = Dummies.nomember.get(i).getNomemberName();
+            NoMemberCity = Dummies.nomember.get(i).getNomemberSi();
+            NoMemberGu = Dummies.nomember.get(i).getNomemberDong();
+            NoMemberDong = Dummies.nomember.get(i).getNomemberDong();
+            NoMemberPhone = Dummies.nomember.get(i).getNomemberPhone();
           }
         }
       }
-    }
-  }
+
 
   String storeName = "";
   String storeCity = "";
@@ -77,9 +77,9 @@ public class RiderDeliveryWait {
     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     System.out.println("\t\t[진행중인 주문]\n");
     System.out.println("\t[고객]");
-    System.out.printf("\t이름 : %s\n", NomemberName);
-    System.out.printf("\t주소 : %s %s %s\n", NomemberCity, memberGu, memberDong);
-    System.out.printf("\t전화번호 : %s\n\n", memberPhone);
+    System.out.printf("\t이름 : %s\n", NoMemberName);
+    System.out.printf("\t주소 : %s %s %s\n", NoMemberCity, NoMemberGu, NoMemberDong);
+    System.out.printf("\t전화번호 : %s\n\n", NoMemberPhone);
 
     System.out.println("\t[점포]");
     System.out.printf("\t점포 이름 : %s\n", storeName);
@@ -93,7 +93,7 @@ public class RiderDeliveryWait {
   } else {
     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     System.out.println("\n\n\t    현재 주문이 없습니다.");
-
+  }
   }
 } // loop
 }
