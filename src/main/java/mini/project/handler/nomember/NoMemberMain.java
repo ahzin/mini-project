@@ -2,17 +2,16 @@ package mini.project.handler.nomember;
 
 import java.util.Scanner;
 
-
 public class NoMemberMain {
 
   private static Scanner scan ;
 
-  static { 
+  static {
     scan = new Scanner(System.in);
   }
- 
+
   // 비회원 메인화면을 출력하고 선택을 통해 주문화면으로 이동하는 메소드
-   
+
   public void nomemberMain() {
 
     NoMemberOrder nomemberOrder = new NoMemberOrder();
@@ -24,7 +23,6 @@ public class NoMemberMain {
 
       System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       System.out.println("\r\n\n\n\t\t[ 안녕하세yo, 회원님 :) ]\n\n");
-      System.out.println("\t  ============로그인 하세요============\n\n");
 
       System.out.println("\n\t\t\t1. 주문하기\n");
       System.out.println("\t     (0을 입력하시면 뒤로 이동합니다.)\n\n");

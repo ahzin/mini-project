@@ -8,9 +8,8 @@ import mini.project.Main.Dummies;
 import mini.project.Main.MenuData;
 import mini.project.Main.MenuPriceData;
 
+// 주문을 담당하는 클래스
 
- // 주문을 담당하는 클래스
- 
 public class NoMemberOrder {
 
   private static String noMemberName;
@@ -39,8 +38,8 @@ public class NoMemberOrder {
   }
 
 
-  
-   // 회원의 정보를 입력하고 같은 주소데이터를 지니는 점포에게 주문하는 메소드
+
+  // 회원의 정보를 입력하고 같은 주소데이터를 지니는 점포에게 주문하는 메소드
   public void nomemberOrder() {
 
 
@@ -524,9 +523,9 @@ public class NoMemberOrder {
     }//while
   }
 
- 
+
   //  비회원 고객의 기본정보를 입력하는 메소드입니다.
-   
+
   public void inputNoMemberInfo() {
 
     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");

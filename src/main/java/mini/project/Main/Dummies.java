@@ -4,36 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-/**
- * [ArrayList 멤버변수 목록]
- * - member(ID|PW|이름|나이|전화번호|시|구|동|포인트)
- * - store(ID|PW|전화번호|시|구|동|주문누적수)
- * - rider(ID|PW|전화번호|(담당)시|구|상태)
- * - menu(점포ID|메뉴)
- * - menuprice(점포ID|메뉴 1의 가격|메뉴 2의 가격|메뉴 3의 가격)
- * - order(수락상태|배달상태|회원ID|whatmean??|메뉴|가격|라이더ID)
- * - review(점포ID|회원ID|리뷰내용)
- * - nomember(ID|이름|전화번호|시|구|동
- * - nostore(카테고리|PW|점포명|전화번호|시|구|동|승인상태)
- * - norider(임시번호|PW|이름|전화번호|(담당)시|구|동|승인상태)
- * ↓↓↓↓↓ 얘네 3개는 회원가입할때 붙는 번호들
- * - ridernumber(번호)
- * - storenumber((번호)한식|중식|일식|치킨|피자)
- * - temporarynumber((번호)회원|점포|라이더)
- *
- * [설명]
- * System.out.println(Dummies.store.get(1).getStoreName());
- *
- * ↑↑↑↑이것은 Dummies Class의 dummy메소드를 사용해 1번째 방의 상점 이름을 불러온 예시이다. ↑↑↑
- *
- * dummy()는  dummy data들을 배열(ArrayList)에 저장한 메소드로, 불러오고 싶은 정보를 불러 올 수 있다.
- *      ex) Dummies.store.get(1).getStoreName()
- *          를 루프에 넣어 출력하면 상점아이디들만 쫘르르~ 출력된다!
- * store = ArrayList변수
- *
- * 사용법 :
- * Dummies.원하는 멤버변수.get(index).get(ID|PW/이름|나이|전화번호|시|구|동|포인트)
- */
 public class Dummies {
   /**외부저장소에있는 가게Data들을 저장하는 ArrayList*/
   public static ArrayList<StoreData> store = new ArrayList<StoreData>();
