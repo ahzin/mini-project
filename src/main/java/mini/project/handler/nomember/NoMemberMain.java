@@ -2,8 +2,7 @@ package mini.project.handler.nomember;
 
 import java.util.Scanner;
 
-/**
- */
+
 public class NoMemberMain {
 
   private static Scanner scan ;

@@ -1,5 +1,6 @@
 package mini.project.handler.nomember;
-//주문시 메뉴의 데이터를 저장담당 클래스
+
+// 주문시 메뉴의 데이터를 저장담당 클래스
 public class MenuOrder {
 
 	private String menuName="";

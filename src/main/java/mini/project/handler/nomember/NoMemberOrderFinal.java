@@ -5,7 +5,7 @@ import mini.project.Main.Dummies;
 import mini.project.Main.OrderData;
 
 
-// 주문의 최종 확인을 담당하는 클래스
+//  주문의 최종 확인을 담당하는 클래스
 
 public class NoMemberOrderFinal {
 

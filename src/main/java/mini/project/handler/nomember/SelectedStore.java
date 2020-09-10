@@ -1,6 +1,6 @@
 package mini.project.handler.nomember;
 
-// 주문시 선택된 점포의 데이터의 저장을 담당하는 클래스입니다.
+//  주문시 선택된 점포의 데이터의 저장을 담당하는 클래스입니다.
 
 public class SelectedStore {
 

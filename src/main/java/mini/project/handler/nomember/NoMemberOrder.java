@@ -9,7 +9,7 @@ import mini.project.Main.MenuData;
 import mini.project.Main.MenuPriceData;
 
 
- //주문을 담당하는 클래스
+ // 주문을 담당하는 클래스
  
 public class NoMemberOrder {
 
