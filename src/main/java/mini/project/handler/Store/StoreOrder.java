@@ -1,7 +1,6 @@
 package mini.project.handler.Store;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 import mini.project.Main.App;
 import mini.project.Main.Dummies;
@@ -25,8 +24,9 @@ public class StoreOrder {
   private String num_accept = "null";
 
   /**
-   * 주문 조회, 수락 메인메소드
+   * 주문 조회 메인메소드
    */
+  @SuppressWarnings("unused")
   public void main() {
 
     StoreMain storemain = new StoreMain();
@@ -50,71 +50,35 @@ public class StoreOrder {
           orderNum = 1;
           String name = "";
           for (int i = 0; i < Dummies.order.size(); i++) {
-            if (Dummies.order.get(i).getWhatmean().equals(storemain.getStoreID())
-                && Dummies.order.get(i).getAccept().equals("수락")
-                && Dummies.order.get(i).getComplete().equals("미완")) {
-              String memberID = Dummies.nomember.get(i).getNomemberID();
-              String ordernum = "";
-              for(int j=0; j<this.orderNum.size(); j++) {
-                if(this.list.get(j).contains(memberID)) {
-                  ordernum = this.orderNum.get(j);
-                }
-
+            String memberID = Dummies.nomember.get(i).getNomemberID();
+            String ordernum = "";
+            for(int j=0; j<this.orderNum.size(); j++) {
+              if(this.list.get(j).contains(memberID)) {
+                ordernum = this.orderNum.get(j);
               }
-
-              String slist = String.format("  %s\t\t%s\t%s\t%s\n", ordernum, this.orderName,
-                  this.orderAddress, this.orderPhone);
-              System.out.println(slist);
-              break;
             }
-
-          }
-          System.out.println("\t(뒤로가기를 원하면 엔터를 입력해주세yo)\n");
-          System.out.print("\t\t상세보기\n\n");
-          System.out.print("\t\t입력 : ");
-          String num = scan.nextLine();
-          System.out.println("\n");
-
-          if (num.equals("0")) {
-            loop = false;
-          } else if (num.equals("1")) {
-            findordernumber(false);
-            App.pause();
+            String slist = String.format("  %s\t\t%s\t%s\t%s\n", ordernum, this.orderName,
+                this.orderAddress, this.orderPhone);
+            System.out.println(slist);
+            break;
           }
         }
-      } else if (num_order.equals("0")) {
+      }else break;
+
+      System.out.println("\t(뒤로가기를 원하면 엔터를 입력해주세yo)\n");
+      System.out.print("\t\t상세보기\n\n");
+      System.out.print("\t\t입력 : ");
+      String num = scan.nextLine();
+      System.out.println("\n");
+
+      if (num.equals("0")) {
+        loop = false;
+      } else if (num.equals("1")) {
+        findordernumber(false);
+        App.pause();
         loop = false;
       }
-    } // loop
-  }// main
-
-  /**
-   * 주문 수락 메소드
-   */
-  public void accept(String id) {
-    Random rnd = new Random();
-    int r = rnd.nextInt(2) + 2001;
-    Scanner scan = new Scanner(System.in);
-    StoreMain storemain = new StoreMain();
-    System.out.print("\n\n\t\t[주문을 수락하시겠습니까?]\n\n\t\t1.예 \n\n\t\t2.아니오\n\n");
-    System.out.print("\t\t입력 : ");
-    this.num_accept = scan.nextLine();
-    System.out.println();
-
-    if (this.num_accept.equals("1")) {
-      for (int i = 0; i < Dummies.order.size(); i++) {
-        if (Dummies.order.get(i).getWhatmean().equals(storemain.getStoreID())
-            && Dummies.order.get(i).getAccept().equals("대기")
-            && Dummies.order.get(i).getMemberID().equals(id)) {
-          Dummies.order.get(i).setAccept("수락");
-          Dummies.order.get(i).setRiderID("R" + r);
-          break;
-        }
-      }
-    } else if (this.num_accept.equals("2")) {
-      System.out.println("\t이전 화면으로 이동합니다.\n");
     }
-
   }
 
 
@@ -137,17 +101,9 @@ public class StoreOrder {
         System.out.printf("\t\t주소 : %s\n\n", this.orderAddress.get(i));
         System.out.printf("\t\t주문상품 : %s\n\n", this.orderMenu.get(i));
         System.out.printf("\t\t결제금액 : %,d원\n\n", Integer.parseInt(this.orderPrice.get(i)));
-        System.out.printf("\t\t배달 결과 : %s\n\n", this.orderResult.get(i));
         id = this.orderID.get(i);
         break;
       }
     }
-    if(b==true) {
-      accept(id);
-    }
-
   }
-
-
-
 }
