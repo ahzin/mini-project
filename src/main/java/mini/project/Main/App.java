@@ -16,7 +16,7 @@ public class App {
     scan = new Scanner(System.in);
   }
 
-  /**프로그램의 시작을 담당하는 Main클래스의 main메소드*/
+  //프로그램의 시작을 담당하는 Main클래스의 main메소드
   public static void main(String[] args) {
 
     //불러오기
@@ -32,7 +32,7 @@ public class App {
     // 메뉴출력 > 항목선택 > 기능실행
     boolean loop = true;
     while(loop) {
-      System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+      System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       System.out.println("\t\t\t1.  회원\n");
       System.out.println("\t\t\t2.  점포\n");
       System.out.println("\t\t\t3.  라이더\n");
@@ -43,7 +43,7 @@ public class App {
       System.out.print("\n\t\t  이동할 화면 입력(숫자): ");
       String selNum = scan.nextLine();
       if (selNum.equals("1")) {
-        //비회원으로 이동
+        //회원으로 이동
         NoMemberMain nm = new NoMemberMain();
         nm.nomemberMain();
       } else if (selNum.equals("2")) {
@@ -54,12 +54,12 @@ public class App {
         RiderMain r = new RiderMain();
         r.ridermainmain();
       } else if (selNum.equals("0")) {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("\n\n\t\t\t  종료");
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         loop = false;
       } else {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("\t\t올바르지 않은 접근입니다.");
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("\t   계속하시려면 엔터키를 입력해주세요");
@@ -73,20 +73,17 @@ public class App {
 
   }//main
   private static void hello() {
-    System.out.println("\r\n\n\n\t\t어서와.. 배달은 처음이지..?\n\n");
-    pause2();
+    System.out.println("\r\n\t      어서와.. 이런 배달은 처음이지..?\n\n");
+    pause();
   }
 
   public static void pause() {
     // 일시정지
-    System.out.println("\n\n\t   계속하시려면 엔터를 입력해주세yo)");
-    scan.nextLine();
-  }
-  public static void pause2() {
-    // 일시정지
+    System.out.println("\n\n\t      계속하시려면 엔터를 입력하세요");
     System.out.println("\t        PRESS ENTER TO CONTUNUE...");
     scan.nextLine();
   }
+
 
 }//class
 
