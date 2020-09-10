@@ -4,9 +4,9 @@ import java.util.Scanner;
 import mini.project.Main.Dummies;
 import mini.project.Main.OrderData;
 
-/**
- *비회원 주문의 최종 확인을 담당하는 클래스입니다.
- */
+
+// 주문의 최종 확인을 담당하는 클래스
+
 public class NoMemberOrderFinal {
 
   private static Scanner scan;
@@ -17,9 +17,9 @@ public class NoMemberOrderFinal {
   }
 
 
-  /**
-   * 비회원의 최종 주문 내역을 출력하는 메소드입니다.
-   */
+ 
+   // 최종 주문 내역을 출력하는 메소드입니다.
+   
   public void lastCheck() {
 
     System.out.println("\t주문 내역을 확인하시려면 엔터를 입력해주세요!");
@@ -57,7 +57,7 @@ public class NoMemberOrderFinal {
 
     System.out.println("\n\n\t현재 상태: "+temp.getAccept());
     System.out.println("\n\t배달 시간: 30분\n\n");
-    System.out.println("\t고객님의 비회원 번호는 "+temp.getMemberID()+"입니다.");
+    System.out.println("\t고객님의 회원 번호는 "+temp.getMemberID()+"입니다.");
 
 
     System.out.println("\n-------------------------------------------------------");
