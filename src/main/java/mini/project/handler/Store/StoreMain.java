@@ -10,9 +10,9 @@ public class StoreMain {
   private static String storeID;
   private static String storeName;
 
-  /**
-   * 점포 메인 클래스
-   */
+  
+   // 점포 메인 클래스
+   
   public void storeMain() {
 
     mainpage();
