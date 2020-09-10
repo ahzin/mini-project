@@ -3,6 +3,7 @@ package mini.project.handler.Store;
 import java.util.Scanner;
 import mini.project.Main.Dummies;
 import mini.project.Main.StoreData;
+import mini.project.Main.App;
 
 public class StoreMain {
 
@@ -17,6 +18,58 @@ public class StoreMain {
     mainpage();
 
   }// main
+  
+  /**
+	 * 점포 - 로그인 페이지 메소드
+	 */
+	private void storelogin() {
+		Scanner scan = new Scanner(System.in);
+		boolean loop = true;
+		int num = 0;
+		while (loop) {
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			System.out.println("\n\n\n\n\t\t== 점포 로그인 ==\n");
+			System.out.print("\t\t1.로그인 \n\n\t\t2.점포등록하기\n\n");
+			System.out.println("\n\t(뒤로가기를 원하면 0번을 입력해주세yo)\n"); 
+			System.out.print("\t\t이동할 화면 입력(숫자) : ");
+			String num_login = scan.nextLine();
+			System.out.println();
+			if (num_login.equals("1")) {
+				System.out.print("\t사장님 번호 입력 : ");
+				String id = scan.nextLine();
+				System.out.print("\n\t비밀번호 입력 : ");
+				String pw = scan.nextLine();
+				boolean gomainpage = false;
+
+				// ↓↓↓↓ 로그인 ID, PW 검사
+				for (int i = 0; i < Dummies.store.size(); i++) {
+					if (id.equals(Dummies.store.get(i).getStoreID()) && pw.equals(Dummies.store.get(i).getStorePW())) {
+						gomainpage = true;
+						num = i;
+						break;
+					}
+				}
+				if (gomainpage == true) {
+					setStoreID(id);
+					setStoreName(Dummies.store.get(num).getStoreName());
+					mainpage();
+				} else {
+					System.out.println("\t알맞은 정보가 아닙니다. 초기화면으로 이동합니다.. ");
+				}
+
+			} else if (num_login.equals("2")) {
+				regist();
+			} else if (num_login.equals("0")) {
+				loop = false;
+			} else {
+				System.out.println("\t\t다시 입력해주세yo.");
+			}
+		} // loop
+		
+		System.out.println("\t초기화면으로 돌아갑니다...");
+		App.pause();
+	}
+
 
   /**
    * 점포 - 메인페이지
